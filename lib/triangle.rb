@@ -7,9 +7,16 @@ class Triangle
     @side3 = side3
   end
 
+  def triangle_equality?
+    side1 + side2 > side3 && side2 + side3 > side1 && side1 + side3 > side2
+  end
+
+  def no_bad_sides?
+    [side1, side2, side3].reduce(:*).positive?
+  end
+
   def valid_triangle?
-    [side1, side2, side3].none? { |side| side <= 0 } &&
-      side1 + side2 > side3 && side2 + side3 > side1 && side1 + side3 > side2
+    triangle_equality? && no_bad_sides?
   end
 
   def kind
