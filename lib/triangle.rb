@@ -12,7 +12,7 @@ class Triangle
   end
 
   def no_bad_sides?
-    [side1, side2, side3].reduce(:*).positive?
+    [side1, side2, side3].none? { |x| x <= 0 }
   end
 
   def valid_triangle?
